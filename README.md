@@ -9,3 +9,4 @@ vagrant up
 
 Note:
 - You need installed VirtualBox 5.x.x running on your PC / Laptop
+- You need installed vagrant also
