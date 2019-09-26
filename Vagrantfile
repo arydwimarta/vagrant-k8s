@@ -4,17 +4,6 @@
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
 Vagrant.configure(2) do |config|
-  
-  config.vm.define "e-stack" do |estack|
-    estack.vm.box = "ubuntu/bionic64"
-    estack.vm.hostname = "e-stack.mine.labs"
-    estack.vm.network "private_network", ip: "192.168.10.100"
-    estack.vm.provider "virtualbox" do |v|
-      v.name = "e-stack"
-      v.memory = 3048
-      v.cpus = 2
-    end
-  end
  
   config.vm.provision "shell", path: "k8s-default.sh"
 
