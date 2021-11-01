@@ -12,7 +12,7 @@ chown -R vagrant:vagrant /home/vagrant/.kube
 
 # Deploy detwork
 echo "[TASK 3] deploy calico netorks"
-su - vagrant -c "kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml"
+su - vagrant -c "kubectl apply -f https://docs.projectcalico.org/v3.20/manifests/calico.yaml"
 
 # Generate Cluster join command
 echo "[TASK 4] Generate and save cluster join command to joincluster.sh"

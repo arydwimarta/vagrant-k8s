@@ -1,0 +1,39 @@
+kubectl cluster-info
+kubectl version
+kubectl version --short
+kubectl get nodes -o wide
+kubectl -n kube-system get pods -o wide
+
+#get admin-user token command
+https://upcloud.com/community/tutorials/deploy-kubernetes-dashboard/
+kubectl create -f dashboard.yaml
+kubectl create -f dashboard-admin.yaml
+kubectl get secret -n kubernetes-dashboard $(kubectl get serviceaccount admin-user -n kubernetes-dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/workloads?namespace=default
+
+
+#1
+watch kubectl get all -o wide
+kubectl run myshell -it --image busybox -- sh
+kubectl delete deploy myshell
+kubectl run myshell --rm -it --image busybox -- sh (delete it self after exit session)
+
+
+#2 how to exspose pod
+#port-forward
+kubectl run nginx --image nginx
+kubectl port-forward nginx-598b589c46-qfdqg 8080:80 (check localhost:8080)
+kubectl run nginx --image nginx --replicas 4
+kubectl scale deploy nginx --replicas 2
+kubectl describe pod nginx-598b589c46-xb4n8
+kubectl expose deployment nginx --type NodePort --port 80 (we can check service port and access nginx from brpwser with node-worker IP)
+kubectl get deploy nginx -o yaml > nginx-test-deploy.yaml (export deployment as yaml file)
+kubectl create -f nginx-test-deploy.yaml
+kubectl create -f nginx-test-service.yaml
+kubectl logs -f nginx-deploy-598b589c46-rzpjz
+
+
+#namespace
+kubectl get namespace
+kubectl create namespace demo
+kubectl delete ns demo
