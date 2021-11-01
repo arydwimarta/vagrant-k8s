@@ -56,6 +56,9 @@ sudo systemctl restart docker
 
 apt-get update
 
+apt-get update
+apt-get install -y apt-transport-https curl
+
 echo "[TASK 6] install and setup kubernetes"
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 touch /etc/apt/sources.list.d/kubernetes.list
